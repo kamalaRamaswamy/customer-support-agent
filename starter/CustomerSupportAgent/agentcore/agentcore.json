@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schema.agentcore.aws.dev/v1/agentcore.json",
+  "name": "CustomerSupportAgent",
+  "version": 1,
+  "managedBy": "CDK",
+  "tags": {
+    "agentcore:created-by": "agentcore-cli",
+    "agentcore:project-name": "CustomerSupportAgent"
+  },
+  "runtimes": [
+    {
+      "name": "CustomerSupportAgent",
+      "build": "CodeZip",
+      "entrypoint": "main.py",
+      "codeLocation": "app/CustomerSupportAgent/",
+      "runtimeVersion": "PYTHON_3_14",
+      "networkMode": "PUBLIC",
+      "protocol": "HTTP",
+      "envVars": [
+        {
+          "name": "GATEWAY_URL",
+          "value": "https://customersupportgateway-cxn4fmrhxn.gateway.bedrock-agentcore.us-east-1.amazonaws.com/mcp"
+        },
+        {
+          "name": "KB_ID",
+          "value": "IUSZMGCJVI"
+        },
+        {
+          "name": "REGION",
+          "value": "us-east-1"
+        },
+        {
+          "name": "MEMORY_ID",
+          "value": "CustomerSupportMemory_ejZEdd6ec1"
+        }
+      ]
+    }
+  ],
+  "memories": [
+    {
+      "name": "CustomerSupportMemory",
+      "eventExpiryDuration": 30,
+      "strategies": []
+    }
+  ],
+  "knowledgeBases": [],
+  "credentials": [],
+  "evaluators": [],
+  "onlineEvalConfigs": [],
+  "agentCoreGateways": [],
+  "policyEngines": [],
+  "configBundles": [],
+  "abTests": [],
+  "harnesses": [],
+  "datasets": [],
+  "capacityProviders": [],
+  "payments": []
+}
