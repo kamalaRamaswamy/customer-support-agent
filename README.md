@@ -58,14 +58,24 @@ An AI Customer Support Agent built on AWS Bedrock AgentCore, Amazon Bedrock (Nov
 ### 1. Agent Responding to User Queries
 
 ![Agent Responding to User Queries](images/Test1-OrderTrack.png)  
-*Figure 1: Agent executing Knowledge Base retrieval and Loyalty calculation to provide personalized support.*
+*Figure 1: Agent executing order tracking*
 
-![Agent Responding to User Queries](agent_response.png)  
-*Figure 1: Agent executing Knowledge Base retrieval and Loyalty calculation to provide personalized support.*
-### 2. Bedrock AgentCore MCP Gateway Setup
 
-![Bedrock AgentCore MCP Gateway Setup](agentcoreGateway.png)  
-*Figure 2: AgentCore Gateway routing requests to API Gateway (`order-tracker`) and AWS Lambda (`refund-processor`).*
+![Agent Responding to User Queries](images/Test2-refundInitiation.png)  
+*Figure 1: Agent executing refund initiation*
+
+![Agent Responding to User Queries](images/Test3-platinumPolicy.png)  
+*Figure 1: Agent accessing Knowledge Base to retireve policy details (RAG)*
+
+![Agent Responding to User Queries](images/Test4-longTermMemory.png)  
+*Figure 1: Agent accessing Long term memory*
+
+![Agent Responding to User Queries](images/reTest5-loyaltyPoints.png)  
+*Figure 1: Agent calculating using built-in code interpretor tool*
+
+![Agent Responding to User Queries](images/reTest6-browser.png)  
+*Figure 1: Agent using Agentcore browser for web search*
+
 
 ## Getting Started
 
