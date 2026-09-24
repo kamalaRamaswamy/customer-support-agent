@@ -84,6 +84,7 @@ An AI Customer Support Agent built on AWS Bedrock AgentCore, Amazon Bedrock (Nov
 * Python 3.10+
 * `uv` package manager
 * Configured AWS CLI credentials with access to Bedrock, AgentCore, and Lambda services (`us-east-1`).
+* AWS AgentCore CLI
 
 ### Local Setup
 
@@ -97,6 +98,12 @@ An AI Customer Support Agent built on AWS Bedrock AgentCore, Amazon Bedrock (Nov
    ```bash
    uv sync
    ```
+
+3. **AWS AgentCore CLI** (Latest recommended version):
+  ```bash
+  # Recommended (Global CLI via npm):
+  npm install -g @aws/agentcore
+  ```
 
 ## Usage & Execution
 
@@ -123,10 +130,10 @@ agentcore invoke '{"prompt": "What are the benefits of the Platinum loyalty tier
 
 ## Environment Variables & Configuration
 
-| Variable / Parameter | Description | Default / Value in Code |
+| Variable / Parameter | Description |
 | :--- | :--- | :--- |
-| `GATEWAY_URL` | AgentCore MCP Gateway Endpoint | `https://customersupportgateway-...us-east-1.amazonaws.com/mcp` |
-| `KB_ID` | Bedrock Knowledge Base ID | `DKQKGCZJBO` |
-| `MEMORY_ID` | Bedrock AgentCore Memory Resource ID | `CustomerSupportMemory-ejZEdd6ec1` |
-| `MODEL_ID` | Foundation Model ID | `global.amazon.nova-2-lite-v1:0` |
-| `REGION` | Target AWS Region | `us-east-1` |
+| `GATEWAY_URL` | AgentCore MCP Gateway Endpoint |
+| `KB_ID` | Bedrock Knowledge Base ID |
+| `MEMORY_ID` | Bedrock AgentCore Memory Resource ID |
+| `MODEL_ID` | Foundation Model ID |
+| `REGION` | Target AWS Region |
