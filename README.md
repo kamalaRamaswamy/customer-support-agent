@@ -57,7 +57,7 @@ An AI Customer Support Agent built on AWS Bedrock AgentCore, Amazon Bedrock (Nov
 
 ### 1. Agent Responding to User Queries
 
-![Agent Responding to User Queries](\images\Test1-OrderTrack.png)  
+![Agent Responding to User Queries](images/Test1-OrderTrack.png)  
 *Figure 1: Agent executing Knowledge Base retrieval and Loyalty calculation to provide personalized support.*
 
 ![Agent Responding to User Queries](agent_response.png)  
