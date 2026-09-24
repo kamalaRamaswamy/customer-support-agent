@@ -62,19 +62,19 @@ An AI Customer Support Agent built on AWS Bedrock AgentCore, Amazon Bedrock (Nov
 
 
 ![Agent Responding to User Queries](images/Test2-refundInitiation.png)  
-*Figure 1: Agent executing refund initiation*
+*Figure 2: Agent executing refund initiation*
 
 ![Agent Responding to User Queries](images/Test3-platinumPolicy.png)  
-*Figure 1: Agent accessing Knowledge Base to retireve policy details (RAG)*
+*Figure 3: Agent accessing Knowledge Base to retireve policy details (RAG)*
 
 ![Agent Responding to User Queries](images/Test4-longTermMemory.png)  
-*Figure 1: Agent accessing Long term memory*
+*Figure 4: Agent accessing Long term memory*
 
 ![Agent Responding to User Queries](images/reTest5-loyaltyPoints.png)  
-*Figure 1: Agent calculating using built-in code interpretor tool*
+*Figure 5: Agent calculating using built-in code interpretor tool*
 
 ![Agent Responding to User Queries](images/reTest6-browser.png)  
-*Figure 1: Agent using Agentcore browser for web search*
+*Figure 6: Agent using Agentcore browser for web search*
 
 
 ## Getting Started
