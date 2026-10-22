@@ -127,7 +127,7 @@ Send requests directly to your cloud-hosted agent:
 ```bash
 agentcore invoke '{"prompt": "What are the benefits of the Platinum loyalty tier?", "customer_id": "CUST-123", "session_id": "s1"}'
 ```
-## Environment Variables & Configuration
+## Environment Variables & Configuration (.env file)
 
 | Variable / Parameter | Description |
 | :--- | :--- |

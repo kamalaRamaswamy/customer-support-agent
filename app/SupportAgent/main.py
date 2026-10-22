@@ -25,6 +25,7 @@ from typing import Dict
 import boto3
 import urllib.request
 import urllib.parse
+from dotenv import load_dotenv
 from bedrock_agentcore.memory import MemoryClient
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from strands_tools.browser import AgentCoreBrowser
@@ -38,6 +39,9 @@ from strands.hooks import (
 )
 from strands.models import BedrockModel
 from strands.tools.mcp.mcp_client import MCPClient
+
+# ── Load Environment Variables ───────────────────────────────────────────────
+load_dotenv()
 
 # ── Logging Configuration ─────────────────────────────────────────────────────
 logging.basicConfig(
@@ -56,12 +60,12 @@ logger.setLevel(logging.DEBUG)
 app = BedrockAgentCoreApp()
 os.environ["BYPASS_TOOL_CONSENT"] = "true"
 
-# ── Configuration ─────────────────────────────────────────────────────────────
-GATEWAY_URL = "https://customersupportgateway-cxn4fmrhxn.gateway.bedrock-agentcore.us-east-1.amazonaws.com/mcp"
-KB_ID       = "DKQKGCZJBO"
-REGION      = "us-east-1"
-MEMORY_ID   = "CustomerSupportMemory-ejZEdd6ec1"
-MODEL_ID    = "global.amazon.nova-2-lite-v1:0"
+# ── Configuration (Loaded from .env) ──────────────────────────────────────────
+GATEWAY_URL = os.getenv("GATEWAY_URL", "")
+KB_ID       = os.getenv("KB_ID", "")
+REGION      = os.getenv("REGION", "us-east-1")
+MEMORY_ID   = os.getenv("MEMORY_ID", "")
+MODEL_ID    = os.getenv("MODEL_ID", "global.amazon.nova-2-lite-v1:0")
 
 
 # ── Lazy Global Clients ───────────────────────────────────────────────────────
@@ -291,32 +295,6 @@ print(json.dumps(result))
         })
 
 
-# # ── Lightweight Native Web Reader Tool (Replaces Playwright / Node) ──────────
-# @tool
-# def fetch_web_page_content(url: str) -> str:
-#     """
-#     Fetch and extract clean text content from a public web page URL.
-#     Use this tool whenever you need to inspect external web pages or links.
-#     """
-#     try:
-#         logger.debug(f"Fetching content natively from URL: {url}")
-#         req = urllib.request.Request(
-#             url,
-#             headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-#         )
-#         with urllib.request.urlopen(req, timeout=10) as response:
-#             html = response.read().decode("utf-8", errors="ignore")
-#             # Strip HTML tags & scripts to yield plain text
-#             text = re.sub(r"<script.*?>.*?</script>", "", html, flags=re.DOTALL | re.IGNORECASE)
-#             text = re.sub(r"<style.*?>.*?</style>", "", text, flags=re.DOTALL | re.IGNORECASE)
-#             text = re.sub(r"<[^>]+>", " ", text)
-#             clean_text = " ".join(text.split())
-#             return clean_text[:4000] if clean_text else "Page loaded, but no main text content was found."
-#     except Exception as e:
-#         logger.error(f"Failed to fetch web content from {url}: {e}", exc_info=True)
-#         return f"Unable to retrieve URL content: {str(e)}"
-
-
 # ── Agent Entrypoint ──────────────────────────────────────────────────────────
 @app.entrypoint
 async def invoke(payload, context=None):
@@ -368,7 +346,6 @@ async def invoke(payload, context=None):
         tools = [
             search_knowledge_base,
             calculate_loyalty_discount,
-            fetch_web_page_content,
             agent_core_browser.browser,
         ]
 
@@ -394,7 +371,7 @@ async def invoke(payload, context=None):
             "You are an empathetic, expert Customer Support AI Assistant for Amazon. "
             "You have access to tools for searching the knowledge base, calculating loyalty discounts, "
             "managing orders, and retrieving contents from external web pages. "
-            "When asked to visit a website or check a URL, use fetch_web_page_content or agent_core_browser to retrieve the requested information."
+            "When asked to visit a website or check a URL, use agent_core_browser to retrieve the requested information."
         )
 
         agent = Agent(
